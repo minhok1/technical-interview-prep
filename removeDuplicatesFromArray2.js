@@ -3,7 +3,6 @@ var removeDuplicates = function (nums) {
   var p2 = 1;
 
   while (p2 !== nums.length) {
-    console.log(p1, p2);
     if (nums[p1] !== nums[p2]) {
       p1 = p2;
       p2++;
