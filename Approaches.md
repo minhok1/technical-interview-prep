@@ -21,4 +21,4 @@
 
 # Linked list
 
--
+- When reversing, use prevNode -> currNode -> nextNode relationship, make it prevNode -> currNode nextNode then move on
