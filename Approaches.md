@@ -1,3 +1,7 @@
+# List
+
+- push() adds to the end, pop() takes out from the end. shift() and unshift() are for the beginning.
+
 # Greedy algorithm
 
 - Simply using the best solution at each iteration
