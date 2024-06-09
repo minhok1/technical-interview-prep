@@ -22,3 +22,7 @@
 # Linked list
 
 - When reversing, use prevNode -> currNode -> nextNode relationship, make it prevNode -> currNode nextNode then move on
+
+# Binary Tree
+
+- Binary tree is just a hierarchical data structure where each parent has at most two children nodes
