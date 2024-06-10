@@ -30,3 +30,4 @@
 # Binary Tree
 
 - Binary tree is just a hierarchical data structure where each parent has at most two children nodes
+- Because binary trees can have "up to" 2 children, worst case time complexity is O(n) and not O(logn)
