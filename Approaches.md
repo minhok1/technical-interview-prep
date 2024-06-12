@@ -31,4 +31,8 @@
 
 - Binary tree is just a hierarchical data structure where each parent has at most two children nodes
 - Because binary trees can have "up to" 2 children, worst case time complexity is O(n) and not O(logn)
+- Use recursion when dealing with binary trees
+- Inorder traversal: left -> node -> right
+- Preorder traversal: node -> left -> right
+- Postorder traversal: left -> right -> node
 - When the recursion takes too long, consider using a map to shorten the lookup
