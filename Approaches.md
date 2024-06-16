@@ -36,3 +36,4 @@
 - Preorder traversal: node -> left -> right
 - Postorder traversal: left -> right -> node
 - When the recursion takes too long, consider using a map to shorten the lookup
+- Recursion is DFS
