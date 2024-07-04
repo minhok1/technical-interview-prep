@@ -37,3 +37,4 @@
 - Postorder traversal: left -> right -> node
 - When the recursion takes too long, consider using a map to shorten the lookup
 - Recursion is DFS
+- When doing a binary search for trees, always remember that O(h^2) = O((logn)^2) is smaller than O(n)!!!!!
