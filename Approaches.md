@@ -38,3 +38,9 @@
 - When the recursion takes too long, consider using a map to shorten the lookup
 - Recursion is DFS
 - When doing a binary search for trees, always remember that O(h^2) = O((logn)^2) is smaller than O(n)!!!!!
+
+# Backtracking
+
+- Use when even multiple for loops can't give a solution and you might have to use a ridiculous number of for loops
+- Use when there's a constraint that needs to be met
+- O(t 2^t) where t is the target
