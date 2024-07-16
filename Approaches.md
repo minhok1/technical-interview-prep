@@ -44,3 +44,7 @@
 - Use when even multiple for loops can't give a solution and you might have to use a ridiculous number of for loops
 - Use when there's a constraint that needs to be met
 - O(t 2^t) where t is the target
+
+# Binary Search
+
+- Assuming array is sorted, check half an array every time to reduce the search time from O(n) to O(logn)
