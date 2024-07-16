@@ -48,3 +48,10 @@
 # Binary Search
 
 - Assuming array is sorted, check half an array every time to reduce the search time from O(n) to O(logn)
+
+# Graph
+
+- Both BFS and DFS uses a set to store visited nodes
+- BFS uses queue: once a node has been visited, push its neighbours into the queue and move onto the next iteration, resolving elements of queue one by one
+- DFS uses stack: visit a node and visit its first neighbour, while putting all its other neighbours into the stack to be visited afterwards
+- Keep in mind that when using matrix, I might be able to replace the values on the grid instead of using a set to keep track of visited nodes
