@@ -48,6 +48,7 @@
 # Binary Search
 
 - Assuming array is sorted, check half an array every time to reduce the search time from O(n) to O(logn)
+- After picking mid (low + floor of half of difference), make sure to have the correct update logic for high and low -> if mid is the one returned, no need to set low <= high, and just do low < high. But if you need that last iteration, do low <= high.
 
 # Graph
 
