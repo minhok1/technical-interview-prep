@@ -49,6 +49,7 @@
 
 - Assuming array is sorted, check half an array every time to reduce the search time from O(n) to O(logn) -> so if the solution looks like O(n) and the array's sorted in any way, use binary search.
 - After picking mid (low + floor of half of difference), make sure to have the correct update logic for high and low -> if mid is the one returned, no need to set low <= high, and just do low < high. But if you need that last iteration, do low <= high.
+- For low and high updates, using <= and => is very useful -> basically just all the values low and high could take.
 
 # Graph
 
@@ -57,3 +58,4 @@
 - DFS uses stack: visit a node and visit its first neighbour, while putting all its other neighbours into the stack to be visited afterwards
 - Or you could just use backtracking method as well - just loop through neighbors and call DFS for every neighbor that haven't been visited yet.
 - Keep in mind that when using matrix, I might be able to replace the values on the grid instead of using a set to keep track of visited nodes
+- Graph and backtracking are actually quite similar!! -> They both use backtracking with DFS
