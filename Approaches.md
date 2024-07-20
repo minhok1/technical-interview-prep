@@ -55,4 +55,5 @@
 - Both BFS and DFS uses a set to store visited nodes
 - BFS uses queue: once a node has been visited, push its neighbours into the queue and move onto the next iteration, resolving elements of queue one by one
 - DFS uses stack: visit a node and visit its first neighbour, while putting all its other neighbours into the stack to be visited afterwards
+- Or you could just use backtracking method as well - just loop through neighbors and call DFS for every neighbor that haven't been visited yet.
 - Keep in mind that when using matrix, I might be able to replace the values on the grid instead of using a set to keep track of visited nodes
