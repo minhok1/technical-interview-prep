@@ -21,7 +21,7 @@
 
 - Use when you want to store unique item or unique key-value pair. (for the fast lookup time)
 - new Map has keys that take O(1) lookup. It allows you to store key-value pair. It has has(key), get(key), set(key, value)
-- Set just contains items that cannot be repeated (also O(1)). It has has(item), add(item) and delete(item)
+- Set just contains items that cannot be repeated (also O(1)). It has has(item), add(item) and delete(item) and .size (for length).
 
 # Linked list
 
