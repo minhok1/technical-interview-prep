@@ -1,6 +1,7 @@
 # List
 
 - push() adds to the end, pop() takes out from the end. shift() and unshift() are for the beginning.
+- splice(index, x) gets rid of x number of elements starting from index, in-place.
 
 # Greedy algorithm
 
