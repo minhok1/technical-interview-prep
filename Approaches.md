@@ -13,6 +13,20 @@
 - Object.call(function) allows to call function as if it's a method of that object.
 - If you return a function in a function, you can "curry" it like this: func1(1)(2)
 - Returning a function in a function allows the other parts of the outer function to only run once. That's because the lexical scope of a function forms closures, meaning that the variables in that particular INSTANCE of the invoked function is made available.
+
+  - For example, see the following:
+    function makeAdder(x) {
+    return function (y) {
+    return x + y;
+    };
+    }
+
+  const add5 = makeAdder(5);
+  const add10 = makeAdder(10);
+
+  console.log(add5(2)); // 7
+  console.log(add10(2)); // 12
+
 - global scope, function scope, block scope -> closure is when a function remembers the variables declared outside of its own scope
 - Memoization: caching the return value of a function based on its parameters. If the parameters don't change, the function is not re-calculated.
 - Constructor is used to initialize an object
