@@ -1,3 +1,24 @@
+# Javascript basics
+
+- Array.push(value), Array.pop(value), shift(value) and unshift() -> all in-place
+- Array.sort() is in-place, but only for string. Use sort((a, b) => a-b) for integers
+- Hoisting means that all the variable and function declarations (but not initialization with a value) are moved up
+- let test1 = 'hello'; let test2 = test1; test2 = 'new' only changes test2 but not test1. That's because we make a copy of the value for test2.
+- But for objects, it's different. variables store the location of the object, so changing something in one variable will also make the same change in another variable that stores it.
+- == only compares values but === also compares the type.
+- var is global/function scope, let and const are function/block scope
+- Implicit type coercion: 24 + "hello" = "24hello", "5" - 3 = 2, falsey/truthy value coercion, (A || B) returns A if A is truthy and B if not, (A && B) returns B if both are truthy and else whichever's falsey
+- Immediately invoked function runs as soon as it's defined: (function(){//do something})()
+- "this" refers to the object that the function is a DIRECT property of. If there is none, it will return the global object.
+- Object.call(function) allows to call function as if it's a method of that object.
+- If you return a function in a function, you can "curry" it like this: func1(1)(2)
+- Returning a function in a function allows the other parts of the outer function to only run once. That's because the lexical scope of a function forms closures, meaning that the variables in that particular INSTANCE of the invoked function is made available.
+- global scope, function scope, block scope -> closure is when a function remembers the variables declared outside of its own scope
+- Memoization: caching the return value of a function based on its parameters. If the parameters don't change, the function is not re-calculated.
+- Constructor is used to initialize an object
+- Promise has resolve() or reject() inside of it so that it knows when to fulfill it, then can be consumed using .then() and .catch(). They can be used together like promise.then().catch() so that either resolve or reject would work for then or catch block.
+- Object.keys(), Object.values(), Object.entries()
+
 # List
 
 - push() adds to the end, pop() takes out from the end. shift() and unshift() are for the beginning.
