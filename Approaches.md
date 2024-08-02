@@ -27,6 +27,8 @@
 # Linked list
 
 - When reversing, use prevNode -> currNode -> nextNode relationship, make it prevNode -> currNode nextNode then move on
+- Reversing a subpart of a linked list: mark nodes before the left node and after the right node, and then go through by making currNode point to prevNode -> prevNode = currNode -> currNode -> nextNode
+- When copying, consider using a hashmap to store mapping from old node to new node
 
 # Binary Tree
 
@@ -36,6 +38,7 @@
 - Inorder traversal: left -> node -> right
 - Preorder traversal: node -> left -> right
 - Postorder traversal: left -> right -> node
+- When solving a traversal problem, consider employing queues or stacks
 - When the recursion takes too long, consider using a map to shorten the lookup
 - Recursion is DFS
 - When doing a binary search for trees, always remember that O(h^2) = O((logn)^2) is smaller than O(n)!!!!!
