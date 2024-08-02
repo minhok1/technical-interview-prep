@@ -1,3 +1,62 @@
+# Javascript basics
+
+- Array.push(value), Array.pop(value), shift(value) and unshift() -> all in-place
+- Array.sort() is in-place, but only for string. Use sort((a, b) => a-b) for integers
+- Hoisting means that all the "var" variables (but not const and let) and function declarations (but not initialization with a value) are moved up
+- let test1 = 'hello'; let test2 = test1; test2 = 'new' only changes test2 but not test1. That's because we make a copy of the value for test2.
+- But for objects, it's different. variables store the location of the object, so changing something in one variable will also make the same change in another variable that stores it.
+- == only compares values but === also compares the type.
+- var is global/function scope, let and const are function/block scope
+- Implicit type coercion: 24 + "hello" = "24hello", "5" - 3 = 2, falsey/truthy value coercion, (A || B) returns A if A is truthy and B if not, (A && B) returns B if both are truthy and else whichever's falsey
+- Immediately invoked function runs as soon as it's defined: (function(){//do something})()
+- "this" refers to the object that the function is a DIRECT property of (AT THE TIME OF ITS CALLING). If there is none, it will return the global object. But when the function is defined using arrow function, "this" refers to the parent scope.
+- Object.call(function) allows to call function as if it's a method of that object. Object.apply() works the same way except it requires an array parameter.
+- If you return a function in a function, you can "curry" it like this: func1(1)(2)
+- Returning a function in a function allows the other parts of the outer function to only run once. That's because the lexical scope of a function forms closures, meaning that the variables in that particular INSTANCE of the invoked function is made available.
+
+  - For example, see the following:
+    function makeAdder(x) {
+    return function (y) {
+    return x + y;
+    };
+    }
+
+  const add5 = makeAdder(5);
+  const add10 = makeAdder(10);
+
+  console.log(add5(2)); // 7
+  console.log(add10(2)); // 12
+
+- global scope, function scope, block scope -> closure is when a function remembers the variables declared outside of its own scope
+- Memoization: caching the return value of a function based on its parameters. If the parameters don't change, the function is not re-calculated.
+- Constructor is used to initialize an object
+- Promise has resolve() or reject() inside of it so that it knows when to fulfill it, then can be consumed using .then() and .catch(). They can be used together like promise.then().catch() so that either resolve or reject would work for then or catch block.
+- Object.keys(), Object.values(), Object.entries()
+- e.g.
+  const b = {
+  name:"Vivek",
+  f: function(){
+  var self = this;
+  console.log(this.name);
+  (function(){
+  console.log(this.name);
+  console.log(self.name);
+  })();
+  }
+  }
+  b.f();
+
+  returns Vivek, undefined and Vivek. IIFE doesn't run immediately because it's not getting defined (object's the one getting defined!). So console.log(this.name) goes first, produces Vivek because we're calling f() of b, then we move onto the IIFE inside. Since this func is not a direct property of an object, this is global so this.name is undefined.
+
+- Always hoist var definition within the functional scope but keep the initialization at the original spot
+  e.g.
+  x++;
+  console.log(x);
+  var x = 23;
+  returns NaN because var x; moves to the top but x = 23 remains at the bottom
+
+- var has no block scope, so if you use var for a for loop, then it will be global (which may impact async stuff within the loops)
+
 # List
 
 - push() adds to the end, pop() takes out from the end. shift() and unshift() are for the beginning.
