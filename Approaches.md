@@ -30,7 +30,7 @@
 - global scope, function scope, block scope -> closure is when a function remembers the variables declared outside of its own scope
 - Memoization: caching the return value of a function based on its parameters. If the parameters don't change, the function is not re-calculated.
 - Constructor is used to initialize an object
-- Promise has resolve() or reject() inside of it so that it knows when to fulfill it, then can be consumed using .then() and .catch(). They can be used together like promise.then().catch() so that either resolve or reject would work for then or catch block.
+- Promise has resolve() or reject() inside of it so that it knows when to fulfill it, then can be consumed using .then() and .catch(). They can be used together like promise.then().catch() so that either resolve or reject would work for then or catch block. -> syntax: new Promise((resolve, reject) => {}). Also, setTimeOut takes in a function and the delay in ms. Try to resolve within that function.
 - Object.keys(), Object.values(), Object.entries()
 - e.g.
   const b = {
@@ -56,6 +56,21 @@
   returns NaN because var x; moves to the top but x = 23 remains at the bottom
 
 - var has no block scope, so if you use var for a for loop, then it will be global (which may impact async stuff within the loops)
+- Event loop in javascript is between call stack, callback queue and Web API. Call stack is just the main body that executes functions. Functions that get called inside other functions get added to the stack and get executed first - easy. Then, once the call stack is empty, the ever-rotating event loop starts grabbing elements from the callback queue. Web API is for adding these async elements to the callback queue. When the main body in call stack has promise, setTimeOut, etc, Web API adds it to the callback queue.
+- Document represents the DOM, and is a part of window. window consists of many things, including document, console, setTimeOut, etc
+- DOM manipulation: Getting a DOM element, storing it in a variable, then altering it (which would change it because it's an object, so the variable would contain a reference to the DOM object)
+- Document.getElementById(), Document.getElementsByClassName, Document.getElementsByTagName(), Document.querySelector() -> selecting elements. getElementsById gives the element, but the others give nodelist. Nodelist is not an array - it's an object, so you need to convert it to an array to loop through it -> = [].slice.call(document.getElementsById().children);
+- querySelector can work for id and class as well by using '#idname' and '.classname' but it is slower
+- const para = Document.createElement("p") creates a p element. Then you can do something like document.querySelector("section").appendChild(para). You can also append text by creating with Document.createTextNode().
+- Doing appendChild(element) will move that element to the end, and removeChild(element) will remove that element. To make a copy, use Node.cloneNode(). You can also remove the element by itself by doing element.remove() or element.parentNode.removeChild(element).
+- Elements have "style" field as well. If you add it in the style tag of HTML, it's just css syntax. But you can also do element.style.color/background-color/width/etc as well.
+- element.setAttribute("class", "highlight") will set the class to highlight defined in css.
+- element.classList.add() adds a class. removeClass, hasClass also exist.
+- Event bubbling -> event propagating upwards into parent elements.
+- You can add events to elements:
+  document.getElementById('test').addEventListener('click', function(e) {
+  //do stuff -> e.target has the element
+  })
 
 # List
 
