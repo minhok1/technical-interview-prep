@@ -137,3 +137,11 @@
 - Or you could just use backtracking method as well - just loop through neighbors and call DFS for every neighbor that haven't been visited yet.
 - Keep in mind that when using matrix, I might be able to replace the values on the grid instead of using a set to keep track of visited nodes
 - Graph and backtracking are actually quite similar!! -> They both use backtracking with DFS
+
+# Topological Sorting
+
+- A way to order printing of graphs so that the ones that are not dependent on others come first (so only for DAGs). For example, if 5 and 4 have edges to 0, then the order could be 4-5-0 but not 4-0-5.
+- Use topological sorting when you need to find the order of nodes within a DAG.
+- Adjacency list is usually stored in an object with key as the source ans the value as the edges FROM that key node to other nodes.
+- After creating the adjacency list, run DFS on the each of the nodes -> nodes found along it are inserted first, then the node itself. (e.g. if DFS goes 1 -> 3 -> 5, stack goes 5, 3, 1 so that 5 is at the bottom of the stack). These nodes are stored in "visited" so that they're skipped if seen later.
+- Pop the stack and return (bottom of the stack is the last)
