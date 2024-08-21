@@ -146,8 +146,12 @@
 - After creating the adjacency list, run DFS on the each of the nodes starting with the one with 0 in-degree (found during the adjacency list formation) -> nodes found along it are inserted first, then the node itself. (e.g. if DFS goes 1 -> 3 -> 5, stack goes 5, 3, 1 so that 5 is at the bottom of the stack). These nodes are stored in "visited" so that they're skipped if seen later.
 - Pop the stack and return (bottom of the stack is the last)
 - In-degree means the number of adjacent nodes. YOU ALWAYS START TOPOSORT WITH A NODE OF IN-DEGREE 0!! That way, you can check if there's a cycle in topolotical sort. If the total length of the stack at the end doesn't match the number of nodes given initially, that means there was a cycle somewhere because we haven't added. If there's no node with in-degree of 0, then that means there is a cycle.
-- So for toposort, I can:
+- But we use in-degree only for Kahn's algorithm, which is BFS. Don't get this confused with the DFS toposort.
+- So for DFS toposort, I can:
   - Make a graph
-  - Make an in-degree object for tracking in-degree
-  - push the nodes with in-degree of 0 into the noIncomings array
-  - while there is still element in noIncomings, run DFS to fill in the stack
+  - For every node, run DFS
+  - At the DFS level, if a cycle is detected (with the visited set), then return []
+  - if not, keep pushing to the result
+- For BFS Kahn's algorithm:
+  - Make a graph
+  - Use in-degree
