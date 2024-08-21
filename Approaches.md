@@ -142,6 +142,12 @@
 
 - A way to order printing of graphs so that the ones that are not dependent on others come first (so only for DAGs). For example, if 5 and 4 have edges to 0, then the order could be 4-5-0 but not 4-0-5.
 - Use topological sorting when you need to find the order of nodes within a DAG.
-- Adjacency list is usually stored in an object with key as the source ans the value as the edges FROM that key node to other nodes.
-- After creating the adjacency list, run DFS on the each of the nodes -> nodes found along it are inserted first, then the node itself. (e.g. if DFS goes 1 -> 3 -> 5, stack goes 5, 3, 1 so that 5 is at the bottom of the stack). These nodes are stored in "visited" so that they're skipped if seen later.
+- Adjacency list is usually stored in an object with key as the source and the value as the edges FROM that key node to other nodes.
+- After creating the adjacency list, run DFS on the each of the nodes starting with the one with 0 in-degree (found during the adjacency list formation) -> nodes found along it are inserted first, then the node itself. (e.g. if DFS goes 1 -> 3 -> 5, stack goes 5, 3, 1 so that 5 is at the bottom of the stack). These nodes are stored in "visited" so that they're skipped if seen later.
 - Pop the stack and return (bottom of the stack is the last)
+- In-degree means the number of adjacent nodes. YOU ALWAYS START TOPOSORT WITH A NODE OF IN-DEGREE 0!! That way, you can check if there's a cycle in topolotical sort. If the total length of the stack at the end doesn't match the number of nodes given initially, that means there was a cycle somewhere because we haven't added. If there's no node with in-degree of 0, then that means there is a cycle.
+- So for toposort, I can:
+  - Make a graph
+  - Make an in-degree object for tracking in-degree
+  - push the nodes with in-degree of 0 into the noIncomings array
+  - while there is still element in noIncomings, run DFS to fill in the stack
