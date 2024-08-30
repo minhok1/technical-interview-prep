@@ -6,7 +6,7 @@
 ## Requirements
 
 - Divide this into functional requirements (absolutely required core flow) and non-functional requirements (performance and scalability)
-  - Functional requirements: Should contain important info like what the UI should look like and what each major component should do and how the user is supposed to interact with the documents and what kinds of data types are supported - Think about what IT SHOULD DO as a part of its core functionalities
+  - Functional requirements: Should contain important info like what the UI should look like and what each major component should do and how the user is supposed to interact with the documents and what kinds of data types are supported - Think about what IT SHOULD DO as a part of its core functionalities E.G infinite scrolling, core functionalities, etc
   - Non-functional: Browsers to be supported, devices (or screen sizes) to support, performance requirements (e.g. should it work with short network band? How fast should it load?), offline mode (application loads images that are already loaded even if it goes offline)
 - Other questions to consider:
   - Who are the main users?
@@ -17,7 +17,7 @@
 - Then do a quick frontend hierarchy -> this is different from the MVC model with controller. You can still have the client store, but focus more on dividing app into multiple views and the control, and their own sub components. Controls should be responsible for actions and View should have different views. You can later expand this diagram to include the controller between client and server, server as black box, and specify what kinds of normalized store there is
 - Application can have shared components and pages (or router routes)
 - Popular approach: Infinite scrolling
-  - Top and bottom sentinel -> when viewport intersects with the bottom viewport, load the next round of items. In the case of pins (Pinterest), we will have a pins queue, where the first few elements are shifted out and new ones are added. Don't forget to leave a row or two above and below the viewport always to make sure they're ready. Also, unless it's a linear one like facebook news feed, make sure to positions these UI elements absolutely within the div and translate them up and down when scrolling. Otherwise, removing and adding DOM elemtns are very expensive.
+  - Top and bottom sentinel -> when viewport intersects with the bottom viewport, load the next round of items. In the case of pins (Pinterest), we will have a pins queue, where the first few elements are shifted out and new ones are added. Don't forget to leave a row or two above and below the viewport always to make sure they're ready. Also, unless it's a linear one like facebook news feed, make sure to position these UI elements absolutely within the div and translate them up and down when scrolling. Otherwise, removing and adding DOM elemtns are very expensive.
 - Focus on the frontend architecture
   - Server as a black box
   - View is for the frontend components with subviews - basically what the user sees
@@ -39,7 +39,7 @@
   - But first, talk about the difference between HTTP1 and HTTP2. This can be used in the optimization section as well.
     - HTTP1: Limited number of connections, plain text, need to explicitly close the connection, single TCP sends one data at a time.
     - HTTP2: Multiple requests in parallel possible, more than just plain text, one TCP sends multiple data over a stream
-  - Use GraphQL when we need flexibility for complex data. GraphQL uses query to get read-only data, and it also contains subscription to receive streaming data. Using GraphQL is better when your requests/responses vary significantly from one another, you have multiple data sources that you merge at the API level, or you have limited bandwidth so you want to minimize the number of requests
+  - Use GraphQL when we need flexibility for complex data. GraphQL uses query to get read-only data, and it also contains subscription to receive streaming data. Using GraphQL is better when your requests/responses vary significantly from one another, you have multiple data sources that you merge at the API level, or you have limited bandwidth so you want to minimize the number of requests. For the purpose of requirements that I've set forth, I don't think graphQL is required, but in the actual application with a lot more concerns and data than what I see in first glance, I wouldn't be surprised if GraphQL is used instead.
 - Continuous communication can do Long Polling, Websockets or Server Sent Events
   - Short polling: At short intervals, client requests info from server. Server returns it if it's available.
   - Long polling: Client sends request to server, the server then holds the request until it becomes available. Then, client requests again to the server immediately afterwards. The server then does the same thing. This is easy to implement but creating a new connection every time is costly for the server. Also, there's a significant latency. If your non-functional requirement restricts latency (which it likely does), then this should not be used.
