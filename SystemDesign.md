@@ -16,8 +16,6 @@
 - Start off by quickly drawing out the UI in an abstract way (with different screen sizes)
 - Then do a quick frontend hierarchy -> this is different from the MVC model with controller. You can still have the client store, but focus more on dividing app into multiple views and the control, and their own sub components. Controls should be responsible for actions and View should have different views. You can later expand this diagram to include the controller between client and server, server as black box, and specify what kinds of normalized store there is
 - Application can have shared components and pages (or router routes)
-- Popular approach: Infinite scrolling
-  - Top and bottom sentinel -> when viewport intersects with the bottom viewport, load the next round of items. In the case of pins (Pinterest), we will have a pins queue, where the first few elements are shifted out and new ones are added. Don't forget to leave a row or two above and below the viewport always to make sure they're ready. Also, unless it's a linear one like facebook news feed, make sure to position these UI elements absolutely within the div and translate them up and down when scrolling. Otherwise, removing and adding DOM elemtns are very expensive.
 - Focus on the frontend architecture
   - Server as a black box
   - View is for the frontend components with subviews - basically what the user sees
@@ -52,7 +50,8 @@
 
 - Performance
   - Lazy loading within a page - only load the essentials upon initialization, then keep loading the rest in parallel as the user starts interacting. There can be multiple layers of lazy loading, where each layer of more importance gets loaded first
-  - Infinite scrolling for feeds: Implement a "scroll" event listener that fires once the scrollbar is past a certain threshold, then fetch the next set of items. But this has a problem - As more items get attached to the store, the DOM keeps increasing and slows down the page. So implement virtualized lists, where you only render posts that are within the viewport.
+  - Infinite scrolling for feeds: Implement a "scroll" event listener (use Intersection observer API) that fires once the scrollbar is past a certain threshold, then fetch the next set of items. But this has a problem - As more items get attached to the store, the DOM keeps increasing and slows down the page. So implement virtualized lists, where you only render posts that are within the viewport.
+    - Top and bottom sentinel -> when viewport intersects with the bottom sentinel, load the next round of items. In the case of pins (Pinterest), we will have a pins queue, where the first few elements are shifted out and new ones are added. Don't forget to leave a row or two above the viewport to make sure they're ready if the user scrolls back up quickly. Also, unless it's a linear one like facebook news feed, make sure to position these UI elements absolutely within the div and translate them up and down when scrolling. Otherwise, removing and adding DOM elemtns are very expensive.
   - Hashtags and mentions need their own data format
   - Draft.js is a popular WYSIWYG text editor - I use it for Speculum Mundi as well
   - For rendering images, you can use CDN (Content Delivery Network) to host and load images. A lot of modern applications also serve images in the webp format for efficiency. Consider using Image Optimization service where the component requests for image url and viewport to the service, then this service returns optimized images. But have CDN cache in the middle so that the images that are already optimized for that url and viewport don't even need to go through the service, and we can just use the cached image in CDN.
