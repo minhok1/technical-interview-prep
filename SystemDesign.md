@@ -72,7 +72,7 @@
   - Use HTTP2 instead of HTTP1 if the application supports it
 - Accessibility
   - Toolbar tips and helps
-  - Colour contrast - better contrast helps those with colour related disabilities
+  - Colour contrast - better contrast helps those with colour related disabilities -> don't forget
   - aria-labelledby, aria-role, aria-label, etc to the correct DOM elements so that assistive technologies can be used to track the contents of the page
 - Multilingual support
 - Multi-device support
