@@ -1,17 +1,18 @@
 # List
 
-- push() adds to the end, pop() takes out from the end. shift() and unshift() are for the beginning.
+- push() adds to the end, pop() takes out from the end. shift() and unshift() are for the beginning -> these are all in-place and therefore mutate the original array
 - splice(index, x) gets rid of x number of elements starting from index, in-place.
 
 # Greedy algorithm
 
 - Simply using the best solution at each iteration
-- Use when iterations of best local solutions surmount to the best overall solution (e.g. jump game II works because the index that jumps the furthest includes the range provided by indices that jump less)
+- Use when iterations of best local solutions surmount to the best overall solution (e.g. jump game II works because the index that jumps the furthest includes the range provided by indices that jump less) -> Think about it. If current index has 3 and the next three elements are 7, 3, 2, I should always pick 7 instead of the 2 and 3 because whatever "good" jump that the 3 and 2 can give me in the next iteration will be included in the 7 jump anyways!
+- Chances are, if you're trying to find the optimal sum over an array of values (unordered and timed) OR if you're trying to find optimal jumps, at least consider greedy
 
 # Two pointer
 
 - Effective solution to many array problems
-- Use when searching for elements that satisfy a particular condition (e.g. elements that add up to the target value)
+- Use when searching for elements that satisfy a particular condition (e.g. elements that add up to the target value, two bars that make the biggest container, etc)
 - Use when comparing/merging two arrays
 
 # Sliding window
@@ -21,7 +22,7 @@
 # Hashmap
 
 - Use when you want to store unique item or unique key-value pair. (for the fast lookup time)
-- new Map has keys that take O(1) lookup. It allows you to store key-value pair. It has has(key), get(key), set(key, value)
+- new Map has keys that take O(1) lookup. It allows you to store key-value pair. It has has(key), get(key), set(key, value). Map can just be replaced with an object as well.
 - Set just contains items that cannot be repeated (also O(1)). It has has(item), add(item) and delete(item) and .size (for length).
 
 # Linked list
@@ -81,3 +82,20 @@
 - For BFS Kahn's algorithm:
   - Make a graph
   - Use in-degree
+
+# Heaps
+
+- Binary tree with the following properties:
+  - Max heap: root is maximum, and each node is bigger than its children nodes
+  - Min heap: root is minimum, and each node is smaller than its children nodes
+- Use heaps when you're trying to find kth max or kth min element
+
+# Priority queue
+
+- A queue where enqueue is normal, but dequeue removes the element with the highest priority (usually the numerical value of the element) -> MinPriorityQueue dequeues the minimal priority and MaxPriorityQueue dequeues the maximum
+- front() returns the highest (or lowest if min priority queue) priority element of the priority queue
+- There is no built in priority queue, but it will either be provided or I'll be asked to make one myself
+- Based on MaxHeap and MinHeap
+- Could even save objects into priority keys as long as we're setting priority as a part of the object: new MinPriorityQueue({ priority: x => x[0] });
+- Priority queue is just the array heapified. The array is just normal preorder traversal of a binary tree, so you can heapify that. In the preorder traversal, the parent of the node is floor of (i - 1) / 2, left child of the node is 2i + 1, and right child of the node is 2i + 2. -> for the code, see heapBasics.js
+- With this heap structure in mind, inserting into priority queue (enqueue) is easy: You just need to make sure that these heap properties are kept while finding the new element's place.
