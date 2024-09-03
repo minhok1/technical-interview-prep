@@ -2,6 +2,7 @@
 
 - push() adds to the end, pop() takes out from the end. shift() and unshift() are for the beginning -> these are all in-place and therefore mutate the original array
 - splice(index, x) gets rid of x number of elements starting from index, in-place.
+- new Array(50).fill(0) gives an array with 50 0's
 
 # Greedy algorithm
 
@@ -12,7 +13,7 @@
 # Two pointer
 
 - Effective solution to many array problems
-- Use when searching for elements that satisfy a particular condition (e.g. elements that add up to the target value, two bars that make the biggest container, etc)
+- Use when searching for a certain number of elements that satisfy a particular condition (e.g. elements that add up to the target value, two bars that make the biggest container, etc)
 - Use when comparing/merging two arrays
 
 # Sliding window
@@ -55,6 +56,7 @@
 - Assuming array is sorted, check half an array every time to reduce the search time from O(n) to O(logn) -> so if the solution looks like O(n) and the array's sorted in any way, use binary search.
 - After picking mid (low + floor of half of difference), make sure to have the correct update logic for high and low -> if mid is the one returned, no need to set low <= high, and just do low < high. But if you need that last iteration, do low <= high.
 - For low and high updates, using <= and => is very useful -> basically just all the values low and high could take.
+- Example: findPeakElement, searchInRotatedSortedArray
 
 # Graph
 
@@ -64,6 +66,7 @@
 - Or you could just use backtracking method as well - just loop through neighbors and call DFS for every neighbor that haven't been visited yet.
 - Keep in mind that when using matrix, I might be able to replace the values on the grid instead of using a set to keep track of visited nodes
 - Graph and backtracking are actually quite similar!! -> They both use backtracking with DFS
+- Example: numberOfIslands
 
 # Topological Sorting
 
@@ -72,7 +75,7 @@
 - Adjacency list is usually stored in an object with key as the source and the value as the edges FROM that key node to other nodes.
 - After creating the adjacency list, run DFS on the each of the nodes starting with the one with 0 in-degree (found during the adjacency list formation) -> nodes found along it are inserted first, then the node itself. (e.g. if DFS goes 1 -> 3 -> 5, stack goes 5, 3, 1 so that 5 is at the bottom of the stack). These nodes are stored in "visited" so that they're skipped if seen later.
 - Pop the stack and return (bottom of the stack is the last)
-- In-degree means the number of adjacent nodes. YOU ALWAYS START TOPOSORT WITH A NODE OF IN-DEGREE 0!! That way, you can check if there's a cycle in topolotical sort. If the total length of the stack at the end doesn't match the number of nodes given initially, that means there was a cycle somewhere because we haven't added. If there's no node with in-degree of 0, then that means there is a cycle.
+- In-degree means the number of adjacent nodes. YOU ALWAYS START TOPOSORT WITH A NODE OF IN-DEGREE 0!! That way, you can check if there's a cycle in topological sort. If the total length of the stack at the end doesn't match the number of nodes given initially, that means there was a cycle somewhere because we haven't added. If there's no node with in-degree of 0, then that means there is a cycle.
 - But we use in-degree only for Kahn's algorithm, which is BFS. Don't get this confused with the DFS toposort.
 - So for DFS toposort, I can:
   - Make a graph
@@ -82,13 +85,14 @@
 - For BFS Kahn's algorithm:
   - Make a graph
   - Use in-degree
+- Example: courseScheduleII
 
 # Heaps
 
 - Binary tree with the following properties:
   - Max heap: root is maximum, and each node is bigger than its children nodes
   - Min heap: root is minimum, and each node is smaller than its children nodes
-- Use heaps when you're trying to find kth max or kth min element
+- Use heaps when you're trying to find kth max or kth min element, or k number of elements that meet a certain threshold.
 
 # Priority queue
 

@@ -107,6 +107,8 @@ function remove(i) {
   extractMax();
 }
 
+// Heapsort: max heap, take the max element, do it again, take the max element, etc, etc... until no element left, then return the sorted array
+
 class PriorityQueue {
   //MaxPriorityQueue
   constructor() {
