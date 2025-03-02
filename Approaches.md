@@ -4,6 +4,12 @@
 - splice(index, x) gets rid of x number of elements starting from index, in-place.
 - new Array(50).fill(0) gives an array with 50 0's
 
+# Kadane's algorithm
+
+- Idea is that an addition of a subarray with positive sum will always end up in a subarray with maximum sum.
+- Iterate through the array with the current pointer as the last element of the subarray, keeping track of the sum
+- When the sum falls below 0, abandon that entire subarray and start over again, with the next element as the starting point of a new subarray
+
 # Greedy algorithm
 
 - Simply using the best solution at each iteration
