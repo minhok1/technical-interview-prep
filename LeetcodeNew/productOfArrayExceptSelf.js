@@ -7,8 +7,8 @@ var productExceptSelf = function (nums) {
   // Keep in mind that if the total is 0 and if there is only one 0, I should return an actual number when iterating through that one 0
 
   let numZero = 0;
-  let total = 1;
   let nonZeroTotal = 1; //For when there's only one 0 and we stumble upon it
+  // let total = 1 -> no need as we would only use total when numZero === 0
 
   nums.forEach((num) => {
     if (num === 0) {
@@ -16,12 +16,11 @@ var productExceptSelf = function (nums) {
     } else {
       nonZeroTotal *= num;
     }
-    total *= num;
   });
 
   return nums.map((num) => {
     if (numZero === 0) {
-      return total / num;
+      return nonZeroTotal / num;
     } else if (numZero === 1) {
       if (num === 0) {
         return nonZeroTotal;
