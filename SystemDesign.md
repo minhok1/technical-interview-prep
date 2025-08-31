@@ -7,7 +7,7 @@
 
 - Divide this into functional requirements (absolutely required core flow) and non-functional requirements (performance and scalability)
   - Functional requirements: Should contain important info like what the UI should look like and what each major component should do and how the user is supposed to interact with the documents and what kinds of data types are supported - Think about what IT SHOULD DO as a part of its core functionalities E.G infinite scrolling, core functionalities, etc
-  - Non-functional: Browsers to be supported, devices (or screen sizes) to support, performance requirements (e.g. should it work with short network band? How fast should it load?), offline mode (application loads images that are already loaded even if it goes offline)
+  - Non-functional: Browsers to be supported, devices (or screen sizes) to support (this means that media queries should be used for responsive design unless you decide to create mobile specific versions using native), performance requirements (e.g. should it work with short network band? How fast should it load?), offline mode (application loads images that are already loaded even if it goes offline)
 - Other questions to consider:
   - Who are the main users?
 
@@ -15,12 +15,12 @@
 
 - Start off by quickly drawing out the UI in an abstract way (with different screen sizes)
 - Then do a quick frontend hierarchy -> this is different from the MVC model with controller. You can still have the client store, but focus more on dividing app into multiple views and the control, and their own sub components. Controls should be responsible for actions and View should have different views. You can later expand this diagram to include the controller between client and server, server as black box, and specify what kinds of normalized store there is
-- Application can have shared components and pages (or router routes)
+- To be fair, it might be better to use MVC even though React isn't considered an MVC-based framework. MVC provides a clear separation of concerns, and I want the architecture to be more framework-agnostic.
 - Focus on the frontend architecture
   - Server as a black box
   - View is for the frontend components with subviews - basically what the user sees
   - Controller is what responds to user interactions. All user interaction goes from view to controller to server, and all data go from server to controller then to view.
-  - Store is where the data lives. For interview purpose, this tends to be app-wide. Think about it as redux store.
+  - Store (Model) is where the data lives. For interview purpose, this tends to be app-wide. Think about it as redux store. Can normalise this as well.
 
 ## Data model
 
@@ -74,6 +74,10 @@
   - Toolbar tips and helps
   - Colour contrast - better contrast helps those with colour related disabilities -> don't forget
   - aria-labelledby, aria-role, aria-label, etc to the correct DOM elements so that assistive technologies can be used to track the contents of the page
+  - Keyboard navigation
 - Multilingual support
 - Multi-device support
 - Security
+  - XSS -> make sure to sanitize form values before processing them so that so js code phishing results in an XSS attack.
+  - Not frontend, but can use query parametrization against SQL injections to pair with the XSS measures above.
+  - CORS -> Disallow other websites to access the endpoints and files
