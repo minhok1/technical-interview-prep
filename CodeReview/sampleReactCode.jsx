@@ -18,6 +18,11 @@ const ProductCatalog = ({ categoryId, searchTerm }) => {
 
   useEffect(() => {
     loadProducts();
+    // It is true that useEffect should contain side effects, but consider other ways to refactor this
+    // For example, you could use react-query to handle fetching and storing altogether.
+    // Alternatively, you could use a custom hook if this logic is used in multiple places.
+    // If custom hooks are not an option either, you could still use useCallback to memoize the products.
+    // Also, you could define the function within useEffect. This lets you clean up loadProducts function from useEffect.
   }, [categoryId]);
 
   const loadProducts = async () => {
@@ -62,7 +67,7 @@ const ProductCatalog = ({ categoryId, searchTerm }) => {
     setFilteredProducts(sorted);
   };
 
-  //this function looks like it can be moved to a utils function collection
+  //this function looks like it can be moved to a utils function collection - that would mean this function doesn't get redefined every time this component re-renders
   const calculateDiscount = (originalPrice, discountPercent) => {
     return originalPrice * (1 - discountPercent / 100);
   };
@@ -76,7 +81,7 @@ const ProductCatalog = ({ categoryId, searchTerm }) => {
   };
 
   const handleProductClick = (productId) => {
-    window.location.href = `/product/${productId}`; // Don't use window.location.href - instead, use navigation that's native to React
+    window.location.href = `/product/${productId}`;
   };
 
   return (
@@ -96,6 +101,7 @@ const ProductCatalog = ({ categoryId, searchTerm }) => {
       {/* instead of just displaying the error, creating an error component can be more user-friendly */}
 
       <div className="products-grid">
+        {/* this whole div should only be rendered when isLoading and error conditions are met */}
         {filteredProducts.map(
           (
             product // As mentioned above, use products.map and filter here instead of using the unnecessary "filteredProducts"
@@ -105,6 +111,7 @@ const ProductCatalog = ({ categoryId, searchTerm }) => {
                 src={product.image}
                 alt={product.name}
                 onClick={() => handleProductClick(product.id)}
+                // use <a> instead of using window.locagtion.href within handleProductClick
               />
               <h3>{product.name}</h3>
               <p>{product.description}</p>
