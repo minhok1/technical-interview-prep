@@ -13,6 +13,7 @@
 - Object.call(function) allows to call function as if it's a method of that object. Object.apply() works the same way except it requires an array parameter.
 - If you return a function in a function, you can "curry" it like this: func1(1)(2)
 - Returning a function in a function allows the other parts of the outer function to only run once. That's because the lexical scope of a function forms closures, meaning that the variables in that particular INSTANCE of the invoked function is made available.
+- We use closures when we want multiple calls of the function access the same variale. If a function has a variable and returns another function, all calls of that returned function has access to that variable. (See the cachedAPI file)
 
   - For example, see the following:
     function makeAdder(x) {
