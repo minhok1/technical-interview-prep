@@ -33,7 +33,7 @@ class Cat {
       this.unsubscribe = {};
     }
   
-    addUnsubscription(keyName, method) {
+    addUnsubscribe(keyName, method) {
         this.unsubscribe[keyName] = method; // We need this because when subscribe() returns the unsubscribe function, you need to save it to this particular cat
     }
 }
@@ -51,7 +51,7 @@ allCat.forEach((singleCat, idx) => {
     const { unsubscribe } = catDomPubSub.subscribe(interest, data =>
       printInterestReceived(name, interest, data)
     );
-    allCat[idx].addUnsubscription(interest, unsubscribe);
+    allCat[idx].addUnsubscribe(interest, unsubscribe);
   });
 });
 
