@@ -2,7 +2,7 @@
 // Implement debounce and throttle functions
 // Use closures and async/await
 
-function debounce(fn, delay) {
+function debounce(fn, delay) { // Debounce: previous calls that didn't finish running get cancelled with a new call being made
   let timeoutId; // This works because technically debounce runs only once - to define debouncedFn. So timeoutId is the same (because of closure) for all debounceFn calls
   return function (newValue) {
     clearTimeout(timeoutId); // clear any previous timer
@@ -12,7 +12,7 @@ function debounce(fn, delay) {
   };
 }
 
-function throttle(fn, delay) {
+function throttle(fn, delay) { // Throttle: new calls are blocked until a call finishes running
   let timeoutId = null;
 
   return function (newValue) {

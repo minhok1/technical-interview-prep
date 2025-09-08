@@ -20,7 +20,7 @@ class AsyncQueue {
       while (priority < this.queue[index].priority) {
         index++;
       }
-      this.queue.splice(index, 0, {task, priority});
+      this.queue.splice(index, 0, {task, priority}); //at index, delete none, and add this object
     }
   }
 
